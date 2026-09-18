@@ -1,0 +1,21 @@
+[Unit]
+Description=Northstar investment portfolio dashboard
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/tianc/apps/investment-portfolio-dashboard
+Environment=NODE_ENV=production
+Environment=HOSTNAME=0.0.0.0
+Environment=PORT=3100
+# The Pi deployment is served over trusted local-network HTTP. Keep this true
+# for any HTTPS deployment so session cookies receive the Secure flag.
+Environment=COOKIE_SECURE=false
+Environment=PATH=/home/tianc/.local/node-v22.23.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/home/tianc/.local/node-v22.23.2/bin/npm run start -- --hostname 0.0.0.0 --port 3100
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
