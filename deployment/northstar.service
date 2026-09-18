@@ -5,7 +5,10 @@ After=network-online.target
 
 [Service]
 Type=simple
+User=tianc
+Group=tianc
 WorkingDirectory=/home/tianc/apps/investment-portfolio-dashboard
+Environment=HOME=/home/tianc
 Environment=NODE_ENV=production
 Environment=HOSTNAME=0.0.0.0
 Environment=PORT=3100
@@ -18,4 +21,4 @@ Restart=on-failure
 RestartSec=5
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
