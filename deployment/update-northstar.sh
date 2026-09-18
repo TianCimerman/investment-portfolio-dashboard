@@ -12,5 +12,5 @@ cd "$app_dir"
 # files directly on the Pi. Local .env.local and .data are Git-ignored.
 git pull --ff-only origin main
 npm run build
-systemctl --user restart northstar.service
-systemctl --user --no-pager --full status northstar.service
+sudo systemctl restart northstar.service
+sudo systemctl --no-pager --full status northstar.service
